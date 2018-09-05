@@ -1,4 +1,6 @@
 package fingerDB.fingerprints;
+import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,15 +20,15 @@ public class FingerprintEntityManagerCommandLineRunner implements CommandLineRun
 		log.info("-------------------------------");
 		log.info("Adding Tom's fingerprint at /data/Tom/");
 		log.info("-------------------------------");
-		Fingerprint tom = new Fingerprint("Tom", "/data/Tom/");
+		Fingerprint tom = new Fingerprint("Tom", "/data/Tom/", 10, 5);
 		fingerprintService.insert(tom);
 		log.info("Inserted Tom" + tom);
 		
 		log.info("-------------------------------");
 		log.info("Finding fingerprint with id 1");
 		log.info("-------------------------------");
-		Fingerprint fingerprint = fingerprintService.find(1L);
-		log.info(fingerprint.toString());
+		Optional<Fingerprint> fingerprint = fingerprintService.find(1L);
+		log.info(fingerprint.get().toString());
 		
 		log.info("-------------------------------");
 		log.info("Finding all fingerprints");
@@ -36,8 +38,8 @@ public class FingerprintEntityManagerCommandLineRunner implements CommandLineRun
 		log.info("-------------------------------");
 		log.info("Changing Tom's fingerprint to /data/Tom/ /data/fingerprints/Tom/");
 		log.info("-------------------------------");
-		tom = new Fingerprint("Tom", "/data/fingerprints/Tom/");
-		fingerprintService.replace(fingerprint.getId(), tom);
+		tom = new Fingerprint("Tom", "/data/fingerprints/Tom/", 10, 5);
+		fingerprintService.replace(fingerprint.get().getId(), tom);
 		log.info("Replaced " + fingerprint + " with " + tom);
 		
 		log.info("-------------------------------");

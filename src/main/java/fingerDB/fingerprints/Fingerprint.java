@@ -3,54 +3,83 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQuery;
 
 @Entity
-@NamedQuery(query = "select a from Fingerprint a", name = "Query_select_all_Fingerprint")
 public class Fingerprint 
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	private String setName;
-	private String path;
+	private String setName,
+				   path;
+	private int printPerPerson,
+				numPeople;
 	
 	protected Fingerprint() {}
 	
-	public Fingerprint(String setName, String path)
+	public Fingerprint(String setName, String path, int printPerPerson, int numPeople)
 	{
 		super();
 		this.setName = setName;
 		this.path = path;
+		this.printPerPerson = printPerPerson;
+		this.numPeople = numPeople;
 	}
 	
-	public Long getId() {
+	public Long getId()
+	{
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Long id)
+	{
 		this.id = id;
 	}
 
-	public String getSetName() {
+	public String getSetName()
+	{
 		return setName;
 	}
 
-	public void setSetName(String setName) {
+	public void setSetName(String setName) 
+	{
 		this.setName = setName;
 	}
 
-	public String getPath() {
+	public String getPath() 
+	{
 		return path;
 	}
 
-	public void setPath(String path) {
+	public void setPath(String path)
+	{
 		this.path = path;
+	}
+
+	public int getPrintPerPerson() 
+	{
+		return printPerPerson;
+	}
+
+	public void setPrintPerPerson(int printPerPerson) 
+	{
+		this.printPerPerson = printPerPerson;
+	}
+
+	public int getNumPeople()
+	{
+		return numPeople;
+	}
+
+	public void setNumPeople(int numPeople)
+	{
+		this.numPeople = numPeople;
 	}
 
 	@Override
 	public String toString()
 	{
-		return String.format("[%d] Set %s: %s", id, setName, path);
+		return String.format("[%d] Set %s(%d prints for %d people): %s", id, setName, 
+							  this.printPerPerson, this.numPeople, path);
 	}
 }
