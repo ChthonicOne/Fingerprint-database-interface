@@ -1,5 +1,6 @@
 package fingerDB.scanner;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +11,7 @@ public class Scanner
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "scanner_id", nullable = false)
 	private Long id;
 	private String name,
 				   path,
