@@ -1,11 +1,21 @@
 package fingerDB.fingerprints;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.persistence.JoinColumn;
 
-@Entity
+@Entity(name = "fingerprint")
+@Table(name = "fingerprint")
 public class Fingerprint 
 {
 	@Id
@@ -16,6 +26,12 @@ public class Fingerprint
 				   path;
 	private int printPerPerson,
 				numPeople;
+	@ManyToMany(fetch = FetchType.LAZY,
+			cascade = CascadeType.ALL)
+	@JoinTable(name = "fingerprint_process",
+			joinColumns = { @JoinColumn(name = "fingerprint_id")},
+			inverseJoinColumns = { @JoinColumn(name = "process_id")})
+	private Set<Process> processes = new HashSet<>();
 	
 	protected Fingerprint() {}
 	
@@ -76,6 +92,21 @@ public class Fingerprint
 	public void setNumPeople(int numPeople)
 	{
 		this.numPeople = numPeople;
+	}
+
+	public Set<Process> getProcesses() 
+	{
+		return processes;
+	}
+
+	public void setProcesses(Set<Process> processes) 
+	{
+		this.processes = processes;
+	}
+	
+	public void addProcesses(Process process)
+	{
+		this.processes.add(process);
 	}
 
 	@Override
