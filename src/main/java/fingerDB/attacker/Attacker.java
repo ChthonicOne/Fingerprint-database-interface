@@ -1,11 +1,20 @@
 package fingerDB.attacker;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import fingerDB.runningProcess.RunningProcess;
 
 @Entity(name = "attacker")
 @Table(name = "attacker")
@@ -20,6 +29,12 @@ public class Attacker
 				   path;
 	private boolean directed;
 	private char bwBox;
+	
+	@OneToMany(fetch = FetchType.LAZY,
+            cascade =  CascadeType.ALL,
+            orphanRemoval = true)
+	@JoinColumn(name = "process_id")
+	private Set<RunningProcess> process = new HashSet<>();
 	
 	public Attacker(String name, String desc, String path, boolean directed, char bwBox)
 	{
@@ -89,6 +104,19 @@ public class Attacker
 	public void setBwBox(char bwBox)
 	{
 		this.bwBox = bwBox;
+	}
+
+	public Set<RunningProcess> getProcess() {
+		return process;
+	}
+
+	public void setProcess(Set<RunningProcess> process) {
+		this.process = process;
+	}
+	
+	public void addProcess(RunningProcess process)
+	{
+		this.process.add(process);
 	}
 
 	@Override
