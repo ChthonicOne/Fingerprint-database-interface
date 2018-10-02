@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import fingerDB.runningProcess.RunningProcess;
+
 import javax.persistence.JoinColumn;
 
 @Entity(name = "fingerprint")
@@ -28,10 +31,12 @@ public class Fingerprint
 				numPeople;
 	@ManyToMany(fetch = FetchType.LAZY,
 			cascade = CascadeType.ALL)
-	@JoinTable(name = "fingerprint_process",
-			joinColumns = { @JoinColumn(name = "fingerprint_id")},
-			inverseJoinColumns = { @JoinColumn(name = "process_id")})
-	private Set<Process> processes = new HashSet<>();
+	@JoinTable(name = "fingerprint_process", 
+	           joinColumns = @JoinColumn(name = "fingerprint_id", 
+	                                     referencedColumnName = "fingerprint_id"), 
+	           inverseJoinColumns = @JoinColumn(name = "process_id", 
+	                                            referencedColumnName = "process_id"))
+	private Set<RunningProcess> processes = new HashSet<>();
 	
 	protected Fingerprint() {}
 	
@@ -94,17 +99,17 @@ public class Fingerprint
 		this.numPeople = numPeople;
 	}
 
-	public Set<Process> getProcesses() 
+	public Set<RunningProcess> getProcesses() 
 	{
 		return processes;
 	}
 
-	public void setProcesses(Set<Process> processes) 
+	public void setProcesses(Set<RunningProcess> processes) 
 	{
 		this.processes = processes;
 	}
 	
-	public void addProcesses(Process process)
+	public void addProcesses(RunningProcess process)
 	{
 		this.processes.add(process);
 	}

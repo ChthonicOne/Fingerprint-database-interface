@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -34,7 +35,10 @@ public class RunningProcess
 	@ManyToMany(fetch = FetchType.LAZY,
 			cascade = CascadeType.ALL,
 			mappedBy = "process")
-	@JoinColumn(name="fingerprint_id")
+	//@JoinColumn(name="fingerprint_id")
+	/*@JoinTable(name = "fingerprint_process",
+			joinColumns = { @JoinColumn(name = "process_id")},
+			inverseJoinColumns = { @JoinColumn(name = "fingerprint_id")})*/
 	@Transient
 	private Set<Fingerprint> fingerprints = new HashSet<>();
 	
