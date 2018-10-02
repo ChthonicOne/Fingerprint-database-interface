@@ -21,4 +21,16 @@ public class FingerController
 	{
 		return query.getAllFingerprints();
 	}
+	
+	@RequestMapping(value = "/scannerlist", method = RequestMethod.GET)
+	public List<DropOption> scannerList()
+	{
+		return query.getAllScanners();
+	}
+	
+	@RequestMapping(value = "/attackerlist", method = RequestMethod.GET)
+	public List<DropOption> attackerList()
+	{
+		return query.getAllAttackers();
+	}
 }

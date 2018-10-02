@@ -1,6 +1,8 @@
 package fingerRest.helpers;
 
+import fingerDB.attacker.Attacker;
 import fingerDB.fingerprints.Fingerprint;
+import fingerDB.scanner.Scanner;
 
 public class DropOption 
 {
@@ -11,6 +13,18 @@ public class DropOption
 	{
 		this.id = print.getId();
 		this.name = print.getSetName();
+	}
+	
+	public DropOption(Scanner scan)
+	{
+		this.id = scan.getId();
+		this.name = scan.getName();
+	}
+	
+	public DropOption(Attacker attack)
+	{
+		this.id = attack.getId();
+		this.name = attack.getName();
 	}
 
 	public Long getId() {
