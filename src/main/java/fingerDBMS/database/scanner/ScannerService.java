@@ -1,4 +1,5 @@
-package fingerDB.fingerprints;
+package fingerDBMS.database.scanner;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -13,26 +14,26 @@ import org.springframework.stereotype.Service;
 @Service
 @Transactional
 @Repository
-public class FingerprintService 
+public class ScannerService 
 {
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(FingerprintService.class);
+	private static final Logger log = LoggerFactory.getLogger(ScannerService.class);
 	
 	@Autowired
-	private FingerprintRepository repository;
+	private ScannerRepository repository;
 	
-	public long insert(Fingerprint fingerprint)
+	public long insert(Scanner scanner)
 	{
-		repository.save(fingerprint);
-		return fingerprint.getId();
+		repository.save(scanner);
+		return scanner.getId();
 	}
 	
-	public Optional<Fingerprint> find(long id)
+	public Optional<Scanner> find(long id)
 	{
 		return repository.findById(id);
 	}
 	
-	public List<Fingerprint> findAll()
+	public List<Scanner> findAll()
 	{
 		return repository.findAll();
 	}
@@ -43,11 +44,11 @@ public class FingerprintService
 		repository.deleteById(id);
 	}
 	
-	public long replace(long id, Fingerprint fingerprint)
+	public long replace(long id, Scanner scanner)
 	{
 		//log.info("Starting delete of " + id);
 		delete(id);
 		//log.info("Inserting " + fingerprint);
-		return insert(fingerprint);
+		return insert(scanner);
 	}
 }

@@ -1,4 +1,4 @@
-package fingerDB.results;
+package fingerDBMS.database.results;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import fingerDB.runningProcess.RunningProcess;
+import fingerDBMS.database.runningProcess.RunningProcess;
 
 @Entity(name = "results")
 @Table(name = "results")

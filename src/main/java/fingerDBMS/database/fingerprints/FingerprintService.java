@@ -1,5 +1,4 @@
-package fingerDB.results;
-
+package fingerDBMS.database.fingerprints;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,26 +13,26 @@ import org.springframework.stereotype.Service;
 @Service
 @Transactional
 @Repository
-public class ResultsService
+public class FingerprintService 
 {
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(ResultsService.class);
+	private static final Logger log = LoggerFactory.getLogger(FingerprintService.class);
 	
 	@Autowired
-	private ResultsRepository repository;
+	private FingerprintRepository repository;
 	
-	public long insert(Results Results)
+	public long insert(Fingerprint fingerprint)
 	{
-		repository.save(Results);
-		return Results.getId();
+		repository.save(fingerprint);
+		return fingerprint.getId();
 	}
 	
-	public Optional<Results> find(long id)
+	public Optional<Fingerprint> find(long id)
 	{
 		return repository.findById(id);
 	}
 	
-	public List<Results> findAll()
+	public List<Fingerprint> findAll()
 	{
 		return repository.findAll();
 	}
@@ -44,11 +43,11 @@ public class ResultsService
 		repository.deleteById(id);
 	}
 	
-	public long replace(long id, Results Results)
+	public long replace(long id, Fingerprint fingerprint)
 	{
 		//log.info("Starting delete of " + id);
 		delete(id);
 		//log.info("Inserting " + fingerprint);
-		return insert(Results);
+		return insert(fingerprint);
 	}
 }

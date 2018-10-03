@@ -1,4 +1,4 @@
-package fingerDB.attacker;
+package fingerDBMS.database.attacker;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -14,7 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import fingerDB.runningProcess.RunningProcess;
+import fingerDBMS.database.runningProcess.RunningProcess;
 
 @Entity(name = "attacker")
 @Table(name = "attacker")

@@ -1,4 +1,4 @@
-package fingerDB.results;
+package fingerDBMS.database.results;
 
 import java.util.List;
 import java.util.Optional;

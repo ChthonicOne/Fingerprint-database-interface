@@ -1,4 +1,4 @@
-package fingerDB.runningProcess;
+package fingerDBMS.database.runningProcess;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,10 +18,10 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import fingerDB.attacker.Attacker;
-import fingerDB.fingerprints.Fingerprint;
-import fingerDB.results.Results;
-import fingerDB.scanner.Scanner;
+import fingerDBMS.database.attacker.Attacker;
+import fingerDBMS.database.fingerprints.Fingerprint;
+import fingerDBMS.database.results.Results;
+import fingerDBMS.database.scanner.Scanner;
 
 @Entity(name = "process")
 @Table(name = "process")

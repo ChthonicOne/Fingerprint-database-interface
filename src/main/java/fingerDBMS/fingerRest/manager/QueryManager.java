@@ -1,28 +1,38 @@
-package fingerRest.manager;
+package fingerDBMS.fingerRest.manager;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import fingerDB.attacker.Attacker;
-import fingerDB.attacker.AttackerService;
-import fingerDB.fingerprints.Fingerprint;
-import fingerDB.fingerprints.FingerprintService;
-import fingerDB.results.ResultsService;
-import fingerDB.runningProcess.RunningProcessService;
-import fingerDB.scanner.Scanner;
-import fingerDB.scanner.ScannerService;
-import fingerRest.helpers.DropOption;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import fingerDBMS.database.attacker.Attacker;
+import fingerDBMS.database.attacker.AttackerService;
+import fingerDBMS.database.fingerprints.Fingerprint;
+import fingerDBMS.database.fingerprints.FingerprintService;
+import fingerDBMS.database.results.ResultsService;
+import fingerDBMS.database.runningProcess.RunningProcessService;
+import fingerDBMS.database.scanner.Scanner;
+import fingerDBMS.database.scanner.ScannerService;
+import fingerDBMS.fingerRest.helpers.DropOption;
+
+@Service
 public class QueryManager 
 {
+	@Autowired
 	private AttackerService attacker;
+	@Autowired
 	private FingerprintService fp;
 	@SuppressWarnings("unused")
+	@Autowired
 	private ResultsService results;
 	@SuppressWarnings("unused")
+	@Autowired
 	private RunningProcessService process;
+	@Autowired
 	private ScannerService scanner;
 	
+	public QueryManager() {}
 	
 	public List<DropOption> getAllFingerprints() 
 	{
@@ -31,6 +41,10 @@ public class QueryManager
 		for (Fingerprint print : prints)
 		{
 			options.add(new DropOption(print));
+		}
+		if (options.isEmpty())
+		{
+			options.add(new DropOption());
 		}
 		return options;
 	}
@@ -43,6 +57,10 @@ public class QueryManager
 		{
 			options.add(new DropOption(scan));
 		}
+		if (options.isEmpty())
+		{
+			options.add(new DropOption());
+		}
 		return options;
 	}
 
@@ -53,6 +71,10 @@ public class QueryManager
 		for (Attacker attack : attacks)
 		{
 			options.add(new DropOption(attack));
+		}
+		if (options.isEmpty())
+		{
+			options.add(new DropOption());
 		}
 		return options;
 	}

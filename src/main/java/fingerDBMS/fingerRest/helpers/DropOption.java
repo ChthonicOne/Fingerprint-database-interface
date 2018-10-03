@@ -1,8 +1,8 @@
-package fingerRest.helpers;
+package fingerDBMS.fingerRest.helpers;
 
-import fingerDB.attacker.Attacker;
-import fingerDB.fingerprints.Fingerprint;
-import fingerDB.scanner.Scanner;
+import fingerDBMS.database.attacker.Attacker;
+import fingerDBMS.database.fingerprints.Fingerprint;
+import fingerDBMS.database.scanner.Scanner;
 
 public class DropOption 
 {
@@ -25,6 +25,12 @@ public class DropOption
 	{
 		this.id = attack.getId();
 		this.name = attack.getName();
+	}
+	
+	public DropOption()
+	{
+		this.id = -1L;
+		this.name = "<Database is empty>";
 	}
 
 	public Long getId() {

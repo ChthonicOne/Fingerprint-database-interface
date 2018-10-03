@@ -1,4 +1,4 @@
-package fingerDB.runningProcess;
+package fingerDBMS.database.results;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,26 +14,26 @@ import org.springframework.stereotype.Service;
 @Service
 @Transactional
 @Repository
-public class RunningProcessService 
+public class ResultsService
 {
 	@SuppressWarnings("unused")
-	private static final Logger log = LoggerFactory.getLogger(RunningProcessService.class);
+	private static final Logger log = LoggerFactory.getLogger(ResultsService.class);
 	
 	@Autowired
-	private RunningProcessRepository repository;
+	private ResultsRepository repository;
 	
-	public long insert(RunningProcess RunningProcess)
+	public long insert(Results Results)
 	{
-		repository.save(RunningProcess);
-		return RunningProcess.getId();
+		repository.save(Results);
+		return Results.getId();
 	}
 	
-	public Optional<RunningProcess> find(long id)
+	public Optional<Results> find(long id)
 	{
 		return repository.findById(id);
 	}
 	
-	public List<RunningProcess> findAll()
+	public List<Results> findAll()
 	{
 		return repository.findAll();
 	}
@@ -44,11 +44,11 @@ public class RunningProcessService
 		repository.deleteById(id);
 	}
 	
-	public long replace(long id, RunningProcess RunningProcess)
+	public long replace(long id, Results Results)
 	{
 		//log.info("Starting delete of " + id);
 		delete(id);
 		//log.info("Inserting " + fingerprint);
-		return insert(RunningProcess);
+		return insert(Results);
 	}
 }

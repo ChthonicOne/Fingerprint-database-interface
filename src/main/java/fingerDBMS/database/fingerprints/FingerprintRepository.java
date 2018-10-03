@@ -1,4 +1,4 @@
-package fingerDB.fingerprints;
+package fingerDBMS.database.fingerprints;
 import java.util.List;
 import java.util.Optional;
 

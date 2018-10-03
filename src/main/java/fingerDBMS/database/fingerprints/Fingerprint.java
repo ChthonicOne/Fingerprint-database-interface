@@ -1,4 +1,4 @@
-package fingerDB.fingerprints;
+package fingerDBMS.database.fingerprints;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,7 +13,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import fingerDB.runningProcess.RunningProcess;
+import fingerDBMS.database.runningProcess.RunningProcess;
 
 import javax.persistence.JoinColumn;
 

@@ -1,4 +1,4 @@
-package fingerDB.attacker;
+package fingerDBMS.database.attacker;
 
 import java.util.List;
 import java.util.Optional;
