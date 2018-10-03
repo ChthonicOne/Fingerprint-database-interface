@@ -19,7 +19,7 @@ import fingerDBMS.fingerRest.manager.QueryManager;
 public class FingerController 
 {
 	@Autowired
-	private QueryManager query = new QueryManager();
+	private QueryManager query;
 	
 	private static final Logger log = LoggerFactory.getLogger(FingerController.class);
 	
