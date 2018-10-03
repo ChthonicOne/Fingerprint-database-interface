@@ -1,5 +1,0 @@
-fingerDB\fingerprints\FingerprintRepository.class
-fingerDB\fingerprints\FingerprintEntityManagerCommandLineRunner.class
-fingerDB\H2InMemoryDbDemoApplication.class
-fingerDB\fingerprints\FingerprintService.class
-fingerDB\fingerprints\Fingerprint.class
