@@ -26,19 +26,23 @@ public class Scanner
 	private Long id;
 	private String name,
 				   path,
-				   desc;
+				   desc,
+				   CLOptions;
 	@OneToMany(fetch = FetchType.LAZY,
             cascade =  CascadeType.ALL,
             orphanRemoval = true)
 	@JoinColumn(name = "process_id")
     private Set<RunningProcess> process = new HashSet<>();
 	
-	public Scanner(String name, String path, String desc)
+	public Scanner() {}
+	
+	public Scanner(String name, String path, String desc, String CLOptions)
 	{
 		super();
 		this.name = name;
 		this.path = path;
 		this.desc = desc;
+		this.CLOptions = CLOptions;
 	}
 
 	public Long getId()
@@ -81,11 +85,23 @@ public class Scanner
 		this.desc = desc;
 	}
 	
-	public Set<RunningProcess> getProcess() {
+	public String getCLOptions()
+	{
+		return CLOptions;
+	}
+
+	public void setCLOptions(String cLOptions)
+	{
+		CLOptions = cLOptions;
+	}
+
+	public Set<RunningProcess> getProcess() 
+	{
 		return process;
 	}
 
-	public void setProcess(Set<RunningProcess> process) {
+	public void setProcess(Set<RunningProcess> process) 
+	{
 		this.process = process;
 	}
 

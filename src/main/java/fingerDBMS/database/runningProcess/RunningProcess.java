@@ -54,6 +54,8 @@ public class RunningProcess
 	@JoinColumn(name = "results_id", nullable = true)
 	private Results results;
 	
+	public RunningProcess() {}
+	
 	public RunningProcess(Set<Fingerprint> fingerprints, Scanner scanner, Attacker attacker)
 	{
 		super();

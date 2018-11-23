@@ -28,6 +28,8 @@ public class Results
     @JoinColumn(name = "running_process_id", nullable = false)
     private RunningProcess process;
 	
+	public Results() {}
+	
 	public Results(String path, double accuracy, RunningProcess process)
 	{
 		super();

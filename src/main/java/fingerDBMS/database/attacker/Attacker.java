@@ -36,6 +36,8 @@ public class Attacker
 	@JoinColumn(name = "process_id")
 	private Set<RunningProcess> process = new HashSet<>();
 	
+	public Attacker() {}
+	
 	public Attacker(String name, String desc, String path, boolean directed, char bwBox)
 	{
 		super();

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class FingerprintEntityManagerCommandLineRunner implements CommandLineRunner 
 {
 	private static final Logger log = LoggerFactory.getLogger(FingerprintEntityManagerCommandLineRunner.class);
@@ -38,9 +38,10 @@ public class FingerprintEntityManagerCommandLineRunner implements CommandLineRun
 		log.info("-------------------------------");
 		log.info("Changing Tom's fingerprint to /data/Tom/ /data/fingerprints/Tom/");
 		log.info("-------------------------------");
-		tom = new Fingerprint("Tom", "/data/fingerprints/Tom/", 10, 5);
-		fingerprintService.replace(fingerprint.get().getId(), tom);
-		log.info("Replaced " + fingerprint + " with " + tom);
+		tom = fingerprintService.find(1L).get();
+		tom.setPath("/data/fingerprints/Tom/");
+		fingerprintService.insert(tom);
+		log.info("Updated Tom to " + tom);
 		
 		log.info("-------------------------------");
 		log.info("Finding all fingerprints");
